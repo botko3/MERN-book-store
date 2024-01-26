@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBlog } from "react-icons/fa";
 import { FaBarsStaggered, FaXmark } from "react-icons/fa6";
+import { AuthContext } from "../contexts/AuthProvider";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+
+  const {user} = useContext(AuthContext)
 
   //toggle menu
   const toggleMenu = () => {
@@ -69,6 +72,7 @@ const Navbar = () => {
             <button>
               <FaBarsStaggered className="w-5 hover:text-blue-700" />
             </button>
+
           </div>
 
           {/*menu btn for moblie devices */}

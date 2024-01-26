@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Sidebar } from "flowbite-react";
 import { BiBuoy } from "react-icons/bi";
 import {
@@ -13,13 +13,17 @@ import {
 } from "react-icons/hi";
 
 import userImg from '../assets/profile.jpg'
+import { AuthContext } from "../contexts/AuthProvider";
 const SideBar = () => {
+  const {user} =useContext(AuthContext);
   return (
     <div>
       {" "}
       <Sidebar aria-label="Sidebar with content separator example">
-      <Sidebar.Logo href="#" img={userImg} imgAlt="Flowbite logo">
-        Flowbite
+      <Sidebar.Logo href="/" img={user.photoURL} imgAlt="Flowbite logo" className="h-16 w-16 rounded ">
+        <p>
+          {user?.displayName || "Demo User"}
+        </p>
       </Sidebar.Logo>
         <Sidebar.Items>
 
